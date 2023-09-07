@@ -1,0 +1,12 @@
+name: ozn-card-storekeeper
+postrgesql:
+  url: postgresql://local_pg_user:bUJfKyGtz2CseV@localhost:5439/local_pg_db
+  maxConnIdleTime: 10
+  maxConns: 10
+  minConns: 2
+http:
+  port: 8089
+  timeout:
+    read: 30000
+    write: 30000
+    idle: 60000
