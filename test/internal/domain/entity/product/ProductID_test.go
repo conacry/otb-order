@@ -1,4 +1,4 @@
-package productTest
+package productEntityTest
 
 import (
 	"errors"

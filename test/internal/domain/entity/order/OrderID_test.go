@@ -1,4 +1,4 @@
-package orderTest
+package orderEntityTest
 
 import (
 	"errors"
@@ -31,7 +31,7 @@ func (o *OrderID) TestOrderIDFrom_ValueIsEmpty_ReturnErr() {
 	errors.Is(expectedErr, err)
 }
 
-func (o *OrderID) TestOrderIDFrom_ValueIsValid_ReturnErr() {
+func (o *OrderID) TestOrderIDFrom_ValueIsValid_ReturnOrderID() {
 	orderIDStr := orderEntity.NewOrderID().String()
 
 	orderID, err := orderEntity.OrderIDFrom(orderIDStr)

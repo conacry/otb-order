@@ -1,11 +1,11 @@
-package customerTest
+package customerEntityTest
 
 import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	customerEntity "online-shop-order/internal/domain/entity/customer"
-	"online-shop-order/internal/domain/entity/customer/test/testDouble"
+	entityStub "online-shop-order/test/testDouble/stub/entity/customer"
 	"testing"
 )
 
@@ -37,13 +37,12 @@ func (c *CustomerBuilder) TestBuild_NoParamGiven_ReturnErr() {
 
 func (c *CustomerBuilder) TestBuild_AllParam_ReturnCustomer() {
 	customerID := customerEntity.NewCustomerID()
-	profile := testDouble.Profile()
+	profile := entityStub.Profile()
 
-	builder := customerEntity.NewBuilder()
-	builder.CustomerID(customerID)
-	builder.Profile(profile)
-
-	customer, err := builder.Build()
+	customer, err := customerEntity.NewBuilder().
+		CustomerID(customerID).
+		Profile(profile).
+		Build()
 
 	require.NoError(c.T(), err)
 	require.NotNil(c.T(), customer)

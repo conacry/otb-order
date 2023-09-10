@@ -1,11 +1,11 @@
-package productTest
+package productEntityTest
 
 import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	productEntity "online-shop-order/internal/domain/entity/product"
-	"online-shop-order/internal/domain/entity/product/test/testDouble"
+	product3 "online-shop-order/test/testDouble/stub/entity/product"
 	"testing"
 )
 
@@ -38,17 +38,16 @@ func (p *ProductBuilder) TestBuild_NoParamGiven_ReturnErr() {
 
 func (p *ProductBuilder) TestBuild_AllParam_ReturnProduct() {
 	productID := productEntity.NewProductID()
-	title := testDouble.Title()
-	description := testDouble.Description()
-	cost := testDouble.Cost()
+	title := product3.Title()
+	description := product3.Description()
+	cost := product3.Cost()
 
-	builder := productEntity.NewBuilder()
-	builder.ProductID(productID)
-	builder.Title(title)
-	builder.Description(description)
-	builder.Cost(cost)
-
-	product, err := builder.Build()
+	product, err := productEntity.NewBuilder().
+		ProductID(productID).
+		Title(title).
+		Description(description).
+		Cost(cost).
+		Build()
 
 	require.NoError(p.T(), err)
 	require.NotNil(p.T(), product)

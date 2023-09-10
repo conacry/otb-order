@@ -1,6 +1,8 @@
 package customerEntity
 
-import "github.com/conacry/go-platform/pkg/errors"
+import (
+	"github.com/conacry/go-platform/pkg/errors"
+)
 
 type Profile struct {
 	firstName string
@@ -24,5 +26,5 @@ func ProfileFrom(firstName string, lastName string) (Profile, error) {
 }
 
 func (p Profile) String() string {
-	return p.firstName + p.lastName
+	return p.firstName + " " + p.lastName
 }

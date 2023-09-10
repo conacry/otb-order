@@ -1,4 +1,4 @@
-package testDouble
+package entityStub
 
 import productEntity "online-shop-order/internal/domain/entity/product"
 

@@ -1,4 +1,4 @@
-package customerTest
+package customerEntityTest
 
 import (
 	"errors"
@@ -31,7 +31,7 @@ func (c *CustomerID) TestCustomerIDFrom_ValueIsEmpty_ReturnErr() {
 	errors.Is(expectedErr, err)
 }
 
-func (c *CustomerID) TestCustomerIDFrom_ValueIsValid_ReturnErr() {
+func (c *CustomerID) TestCustomerIDFrom_ValueIsValid_ReturnCustomerID() {
 	customerIDStr := entityCustomer.NewCustomerID().String()
 
 	customerID, err := entityCustomer.CustomerIDFrom(customerIDStr)

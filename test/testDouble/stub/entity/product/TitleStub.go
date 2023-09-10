@@ -1,4 +1,4 @@
-package testDouble
+package entityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"

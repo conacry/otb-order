@@ -1,4 +1,4 @@
-package orderTest
+package orderEntityTest
 
 import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/suite"
 	entityCustomer "online-shop-order/internal/domain/entity/customer"
 	orderEntity "online-shop-order/internal/domain/entity/order"
-	"online-shop-order/internal/domain/entity/product/test/testDouble"
+	"online-shop-order/test/testDouble/stub/entity/product"
 	"testing"
 	"time"
 )
@@ -40,17 +40,16 @@ func (o *OrderBuilder) TestBuild_NoParamGiven_ReturnErr() {
 
 func (p *OrderBuilder) TestBuild_AllParam_ReturnOrder() {
 	orderID := orderEntity.NewOrderID()
-	products := testDouble.Products(5)
+	products := entityStub.Products(5)
 	customerID := entityCustomer.NewCustomerID()
 	createdAt := time.Now()
 
-	builder := orderEntity.NewBuilder()
-	builder.OrderID(orderID)
-	builder.Products(products)
-	builder.CustomerID(customerID)
-	builder.CreatedAt(&createdAt)
-
-	order, err := builder.Build()
+	order, err := orderEntity.NewBuilder().
+		OrderID(orderID).
+		Products(products).
+		CustomerID(customerID).
+		CreatedAt(&createdAt).
+		Build()
 
 	require.NoError(p.T(), err)
 	require.NotNil(p.T(), order)

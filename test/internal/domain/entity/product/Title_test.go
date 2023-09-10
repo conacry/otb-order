@@ -1,11 +1,11 @@
-package productTest
+package productEntityTest
 
 import (
 	"errors"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	productEntity "online-shop-order/internal/domain/entity/product"
-	"online-shop-order/internal/domain/entity/product/test/testDouble"
+	"online-shop-order/test/testDouble/stub/entity/product"
 	"testing"
 )
 
@@ -28,7 +28,7 @@ func (p *ProductTitle) TestTitleFrom_ValueIsEmpty_ReturnErr() {
 }
 
 func (p *ProductTitle) TestTitleFrom_ValueIsValid_ReturnTitle() {
-	titleStr := testDouble.Title().String()
+	titleStr := entityStub.Title().String()
 
 	title, err := productEntity.TitleFrom(titleStr)
 
