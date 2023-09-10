@@ -1,6 +1,8 @@
-package orderEntity
+package customerEntity
 
-import "github.com/conacry/go-platform/pkg/generator"
+import (
+	"github.com/conacry/go-platform/pkg/generator"
+)
 
 type CustomerID struct {
 	value string

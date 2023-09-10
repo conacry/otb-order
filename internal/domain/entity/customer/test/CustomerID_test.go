@@ -1,10 +1,10 @@
-package orderTest
+package customerTest
 
 import (
 	"errors"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	orderEntity "online-shop-order/internal/domain/entity/order"
+	entityCustomer "online-shop-order/internal/domain/entity/customer"
 	"testing"
 )
 
@@ -18,23 +18,23 @@ func TestCustomerID(t *testing.T) {
 }
 
 func (c *CustomerID) TestNewCustomerID_ReturnCustomerID() {
-	customerID := orderEntity.NewCustomerID()
+	customerID := entityCustomer.NewCustomerID()
 	require.NotNil(c.T(), customerID)
 }
 
 func (c *CustomerID) TestCustomerIDFrom_ValueIsEmpty_ReturnErr() {
-	expectedErr := orderEntity.ErrCustomerIDIsEmpty
+	expectedErr := entityCustomer.ErrCustomerIDIsEmpty
 
-	customerID, err := orderEntity.CustomerIDFrom("")
+	customerID, err := entityCustomer.CustomerIDFrom("")
 
 	require.Nil(c.T(), customerID)
 	errors.Is(expectedErr, err)
 }
 
 func (c *CustomerID) TestCustomerIDFrom_ValueIsValid_ReturnErr() {
-	customerIDStr := orderEntity.NewCustomerID().String()
+	customerIDStr := entityCustomer.NewCustomerID().String()
 
-	customerID, err := orderEntity.CustomerIDFrom(customerIDStr)
+	customerID, err := entityCustomer.CustomerIDFrom(customerIDStr)
 
 	require.NotNil(c.T(), customerID)
 	require.Equal(c.T(), customerIDStr, customerID.String())

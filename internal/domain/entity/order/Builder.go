@@ -2,6 +2,7 @@ package orderEntity
 
 import (
 	"github.com/conacry/go-platform/pkg/errors"
+	entityCustomer "online-shop-order/internal/domain/entity/customer"
 	productEntity "online-shop-order/internal/domain/entity/product"
 	"time"
 )
@@ -9,7 +10,7 @@ import (
 type Builder struct {
 	orderID    *OrderID
 	products   []productEntity.Product
-	customerID *CustomerID
+	customerID *entityCustomer.CustomerID
 	createdAt  *time.Time
 
 	errors *errors.Errors
@@ -31,7 +32,7 @@ func (b *Builder) Products(products []productEntity.Product) *Builder {
 	return b
 }
 
-func (b *Builder) CustomerID(customerID *CustomerID) *Builder {
+func (b *Builder) CustomerID(customerID *entityCustomer.CustomerID) *Builder {
 	b.customerID = customerID
 	return b
 }

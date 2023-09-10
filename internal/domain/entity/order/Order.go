@@ -1,6 +1,7 @@
 package orderEntity
 
 import (
+	entityCustomer "online-shop-order/internal/domain/entity/customer"
 	productEntity "online-shop-order/internal/domain/entity/product"
 	"time"
 )
@@ -8,7 +9,7 @@ import (
 type Order struct {
 	orderID    *OrderID
 	products   []productEntity.Product
-	customerID *CustomerID
+	customerID *entityCustomer.CustomerID
 	createdAt  *time.Time
 }
 
@@ -20,7 +21,7 @@ func (o *Order) Products() []productEntity.Product {
 	return o.products
 }
 
-func (o *Order) CustomerID() *CustomerID {
+func (o *Order) CustomerID() *entityCustomer.CustomerID {
 	return o.customerID
 }
 
