@@ -2,7 +2,7 @@ package entityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"
-	customerEntity "online-shop-order/internal/domain/entity/customer"
+	customerEntity "online-shop-order/domain/entity/customer"
 )
 
 func Profile() *customerEntity.Profile {

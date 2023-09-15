@@ -1,6 +1,6 @@
 package entityStub
 
-import productEntity "online-shop-order/internal/domain/entity/product"
+import productEntity "online-shop-order/domain/entity/product"
 
 func Product() *productEntity.Product {
 	productID := productEntity.NewProductID()
