@@ -2,8 +2,8 @@ package orderEntity
 
 import (
 	"github.com/conacry/go-platform/pkg/errors"
-	entityCustomer "online-shop-order/internal/domain/entity/customer"
-	productEntity "online-shop-order/internal/domain/entity/product"
+	entityCustomer "online-shop-order/domain/entity/customer"
+	productEntity "online-shop-order/domain/entity/product"
 	"time"
 )
 

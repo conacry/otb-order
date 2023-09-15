@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	orderEntity "online-shop-order/internal/domain/entity/order"
+	orderEntity "online-shop-order/domain/entity/order"
 	"testing"
 )
 

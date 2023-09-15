@@ -2,7 +2,7 @@ package entityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"
-	productEntity "online-shop-order/internal/domain/entity/product"
+	productEntity "online-shop-order/domain/entity/product"
 )
 
 func Cost() *productEntity.Cost {

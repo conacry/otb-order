@@ -4,7 +4,7 @@ import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	customerEntity "online-shop-order/internal/domain/entity/customer"
+	customerEntity "online-shop-order/domain/entity/customer"
 	entityStub "online-shop-order/test/testDouble/stub/entity/customer"
 	"testing"
 )
