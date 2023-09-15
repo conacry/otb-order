@@ -2,16 +2,16 @@ package orderEntity
 
 import (
 	"github.com/conacry/go-platform/pkg/errors"
+	"github.com/conacry/go-platform/pkg/time"
 	entityCustomer "online-shop-order/domain/entity/customer"
 	productEntity "online-shop-order/domain/entity/product"
-	"time"
 )
 
 type Builder struct {
-	orderID    *OrderID
-	products   []productEntity.Product
-	customerID *entityCustomer.CustomerID
-	createdAt  *time.Time
+	orderID   *OrderID
+	products  []*productEntity.Product
+	customer  *entityCustomer.Customer
+	createdAt *time.Time
 
 	errors *errors.Errors
 }
@@ -27,13 +27,13 @@ func (b *Builder) OrderID(orderID *OrderID) *Builder {
 	return b
 }
 
-func (b *Builder) Products(products []productEntity.Product) *Builder {
+func (b *Builder) Products(products []*productEntity.Product) *Builder {
 	b.products = products
 	return b
 }
 
-func (b *Builder) CustomerID(customerID *entityCustomer.CustomerID) *Builder {
-	b.customerID = customerID
+func (b *Builder) Customer(customer *entityCustomer.Customer) *Builder {
+	b.customer = customer
 	return b
 }
 
@@ -55,11 +55,11 @@ func (b *Builder) checkRequiredFields() {
 	if b.orderID == nil {
 		b.errors.AddError(ErrOrderIDIsRequired)
 	}
-	if b.products == nil {
+	if len(b.products) == 0 {
 		b.errors.AddError(ErrProductsIsRequired)
 	}
-	if b.customerID == nil {
-		b.errors.AddError(ErrCustomerIDIsRequired)
+	if b.customer == nil {
+		b.errors.AddError(ErrCustomerIsRequired)
 	}
 	if b.createdAt == nil {
 		b.errors.AddError(ErrCreatedAtIsRequired)
@@ -67,9 +67,9 @@ func (b *Builder) checkRequiredFields() {
 }
 func (b *Builder) createFromBuilder() *Order {
 	return &Order{
-		orderID:    b.orderID,
-		products:   b.products,
-		customerID: b.customerID,
-		createdAt:  b.createdAt,
+		orderID:   b.orderID,
+		products:  b.products,
+		customer:  b.customer,
+		createdAt: b.createdAt,
 	}
 }

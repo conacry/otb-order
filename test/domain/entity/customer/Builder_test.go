@@ -2,6 +2,7 @@ package customerEntityTest
 
 import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	customerEntity "online-shop-order/domain/entity/customer"
@@ -44,4 +45,7 @@ func (s *CustomerBuilderShould) TestBuild_AllParam_ReturnCustomer() {
 		Build()
 	require.NoError(s.T(), err)
 	require.NotNil(s.T(), customer)
+
+	assert.EqualValues(s.T(), customerID, customer.CustomerID())
+	assert.EqualValues(s.T(), profile, customer.Profile())
 }

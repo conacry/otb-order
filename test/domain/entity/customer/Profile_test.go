@@ -2,8 +2,8 @@ package customerEntityTest
 
 import (
 	"errors"
-	"fmt"
 	"github.com/conacry/go-platform/pkg/generator"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	customerEntity "online-shop-order/domain/entity/customer"
@@ -40,10 +40,9 @@ func (s *CustomerProfileShould) TestProfileFrom_LastNameIsEmpty_ReturnErr() {
 func (s *CustomerProfileShould) TestProfileFrom_AllParamIsValid_ReturnProfile() {
 	firstName := generator.RandomDefaultStr()
 	lastName := generator.RandomDefaultStr()
-	profileStr := firstName + " " + lastName
 
 	profile, err := customerEntity.ProfileFrom(firstName, lastName)
-	fmt.Println(profileStr, profile.String())
-	require.Equal(s.T(), profileStr, profile.String())
 	require.NoError(s.T(), err)
+	assert.Equal(s.T(), firstName, profile.FirstName())
+	assert.Equal(s.T(), lastName, profile.LastName())
 }

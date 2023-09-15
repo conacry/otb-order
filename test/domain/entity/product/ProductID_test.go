@@ -26,6 +26,12 @@ func (s *ProductIDShould) TestProductIDFrom_ValueIsEmpty_ReturnErr() {
 	errors.Is(expectedErr, err)
 }
 
+func (s *ProductIDShould) TestProductIDFrom_ValueIsNotUUID_ReturnErr() {
+	productID, err := productEntity.ProductIDFrom(generator.RandomDefaultStr())
+	require.Nil(s.T(), productID)
+	require.Error(s.T(), err)
+}
+
 func (s *ProductIDShould) TestProductIDFrom_AllParam_ReturnProductID() {
 	productIDStr := generator.GenerateUUID()
 

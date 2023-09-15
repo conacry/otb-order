@@ -19,6 +19,14 @@ func ProfileFrom(firstName string, lastName string) (Profile, error) {
 	}, nil
 }
 
-func (p Profile) String() string {
+func (p *Profile) FirstName() string {
+	return p.firstName
+}
+
+func (p *Profile) LastName() string {
+	return p.lastName
+}
+
+func (p *Profile) String() string {
 	return p.firstName + " " + p.lastName
 }
