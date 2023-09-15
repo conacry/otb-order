@@ -2,13 +2,13 @@ package orderEntityTest
 
 import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
+	"github.com/conacry/go-platform/pkg/time"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	orderEntity "online-shop-order/domain/entity/order"
 	customerEntityStub "online-shop-order/test/testDouble/stub/entity/customer"
 	"online-shop-order/test/testDouble/stub/entity/product"
 	"testing"
-	"time"
 )
 
 type OrderBuilderShould struct {
@@ -29,7 +29,7 @@ func (s *OrderBuilderShould) TestBuild_NoParamGiven_ReturnErr() {
 	expectedErr := []error{
 		orderEntity.ErrOrderIDIsRequired,
 		orderEntity.ErrProductsIsRequired,
-		orderEntity.ErrCustomerIDIsRequired,
+		orderEntity.ErrCustomerIsRequired,
 		orderEntity.ErrCreatedAtIsRequired,
 	}
 
@@ -41,14 +41,14 @@ func (s *OrderBuilderShould) TestBuild_NoParamGiven_ReturnErr() {
 func (s *OrderBuilderShould) TestBuild_AllParam_ReturnOrder() {
 	orderID := orderEntity.NewOrderID()
 	products := productEntityStub.GetProducts(5)
-	customerID := customerEntityStub.GetCustomerID()
+	customer := customerEntityStub.GetCustomer()
 	createdAt := time.Now()
 
 	order, err := orderEntity.NewBuilder().
 		OrderID(orderID).
 		Products(products).
-		CustomerID(customerID).
-		CreatedAt(&createdAt).
+		Customer(customer).
+		CreatedAt(createdAt).
 		Build()
 	require.NoError(s.T(), err)
 	require.NotNil(s.T(), order)

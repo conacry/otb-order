@@ -1,7 +1,6 @@
 package customerEntityTest
 
 import (
-	"errors"
 	"github.com/conacry/go-platform/pkg/generator"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
@@ -19,11 +18,15 @@ func TestCustomerIDShould(t *testing.T) {
 }
 
 func (s *CustomerIDShould) TestCustomerIDFrom_ValueIsEmpty_ReturnErr() {
-	expectedErr := customerEntity.ErrCustomerIDIsEmpty
-
 	customerID, err := customerEntity.CustomerIDFrom("")
 	require.Nil(s.T(), customerID)
-	errors.Is(expectedErr, err)
+	require.ErrorIs(s.T(), err, customerEntity.ErrCustomerIDIsEmpty)
+}
+
+func (s *CustomerIDShould) TestCustomerIDFrom_ValueIsNotUUID_ReturnErr() {
+	customerID, err := customerEntity.CustomerIDFrom(generator.RandomDefaultStr())
+	require.Nil(s.T(), customerID)
+	require.Error(s.T(), err)
 }
 
 func (s *CustomerIDShould) TestCustomerIDFrom_ValueIsValid_ReturnCustomerID() {

@@ -22,11 +22,15 @@ func GetProduct() *productEntity.Product {
 	return product
 }
 
-func GetProducts(count int) []productEntity.Product {
-	products := make([]productEntity.Product, count)
+func GetEmptyProducts() []*productEntity.Product {
+	return make([]*productEntity.Product, 0)
+}
+
+func GetProducts(count int) []*productEntity.Product {
+	products := make([]*productEntity.Product, count)
 	for i := 0; i < count; i++ {
 		product := GetProduct()
-		products = append(products, *product)
+		products = append(products, product)
 	}
 
 	return products
