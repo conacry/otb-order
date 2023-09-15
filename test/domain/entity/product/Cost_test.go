@@ -9,30 +9,30 @@ import (
 	"testing"
 )
 
-type ProductCost struct {
+type ProductCostShould struct {
 	suite.Suite
 }
 
-func TestProductCost(t *testing.T) {
+func TestProductCostShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(ProductCost))
+	suite.Run(t, new(ProductCostShould))
 }
 
-func (p *ProductCost) TestCostFrom_ValueIsNegative_ReturnErr() {
+func (s *ProductCostShould) TestCostFrom_ValueIsNegative_ReturnErr() {
 	expectedErr := productEntity.ErrCostIsNegative
-	negativeCost := entityStub.Cost().Int() * -1
+	negativeCost := productEntityStub.GetCost().Int() * -1
 
 	cost, err := productEntity.CostFrom(negativeCost)
 
-	require.Equal(p.T(), int64(-1), cost.Int())
+	require.Equal(s.T(), int64(-1), cost.Int())
 	errors.Is(expectedErr, err)
 }
 
-func (p *ProductCost) TestCostFrom_ValueIsValid_ReturnCost() {
-	costInt := entityStub.Cost().Int()
+func (s *ProductCostShould) TestCostFrom_ValueIsValid_ReturnCost() {
+	costInt := productEntityStub.GetCost().Int()
 
 	cost, err := productEntity.CostFrom(costInt)
 
-	require.NoError(p.T(), err)
-	require.Equal(p.T(), costInt, cost.Int())
+	require.NoError(s.T(), err)
+	require.Equal(s.T(), costInt, cost.Int())
 }

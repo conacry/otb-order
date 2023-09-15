@@ -10,43 +10,40 @@ import (
 	"testing"
 )
 
-type CustomerProfile struct {
+type CustomerProfileShould struct {
 	suite.Suite
 }
 
-func TestCustomerProfile(t *testing.T) {
+func TestCustomerProfileShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(CustomerProfile))
+	suite.Run(t, new(CustomerProfileShould))
 }
 
-func (c *CustomerProfile) TestProfileFrom_FirstNameIsEmpty_ReturnErr() {
+func (s *CustomerProfileShould) TestProfileFrom_FirstNameIsEmpty_ReturnErr() {
 	expectedErr := customerEntity.ErrFirstNameProfileIsEmpty
 	lastName := generator.RandomDefaultStr()
 
 	profile, err := customerEntity.ProfileFrom("", lastName)
-
-	require.Equal(c.T(), customerEntity.Profile{}, profile)
+	require.Equal(s.T(), customerEntity.Profile{}, profile)
 	errors.Is(expectedErr, err)
 }
 
-func (c *CustomerProfile) TestProfileFrom_LastNameIsEmpty_ReturnErr() {
+func (s *CustomerProfileShould) TestProfileFrom_LastNameIsEmpty_ReturnErr() {
 	expectedErr := customerEntity.ErrLastNameProfileIsEmpty
 	firstName := generator.RandomDefaultStr()
 
 	profile, err := customerEntity.ProfileFrom(firstName, "")
-
-	require.Equal(c.T(), customerEntity.Profile{}, profile)
+	require.Equal(s.T(), customerEntity.Profile{}, profile)
 	errors.Is(expectedErr, err)
 }
 
-func (c *CustomerProfile) TestProfileFrom_AllParamIsValid_ReturnProfile() {
+func (s *CustomerProfileShould) TestProfileFrom_AllParamIsValid_ReturnProfile() {
 	firstName := generator.RandomDefaultStr()
 	lastName := generator.RandomDefaultStr()
 	profileStr := firstName + " " + lastName
 
 	profile, err := customerEntity.ProfileFrom(firstName, lastName)
-
 	fmt.Println(profileStr, profile.String())
-	require.Equal(c.T(), profileStr, profile.String())
-	require.NoError(c.T(), err)
+	require.Equal(s.T(), profileStr, profile.String())
+	require.NoError(s.T(), err)
 }

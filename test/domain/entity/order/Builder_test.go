@@ -4,28 +4,28 @@ import (
 	commonTesting "github.com/conacry/go-platform/pkg/testing"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	entityCustomer "online-shop-order/domain/entity/customer"
 	orderEntity "online-shop-order/domain/entity/order"
+	customerEntityStub "online-shop-order/test/testDouble/stub/entity/customer"
 	"online-shop-order/test/testDouble/stub/entity/product"
 	"testing"
 	"time"
 )
 
-type OrderBuilder struct {
+type OrderBuilderShould struct {
 	suite.Suite
 }
 
-func TestOrderBuilder(t *testing.T) {
+func TestOrderBuilderShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(OrderBuilder))
+	suite.Run(t, new(OrderBuilderShould))
 }
 
-func (o *OrderBuilder) TestNewBuilder_ReturnBuilder() {
+func (s *OrderBuilderShould) TestNewBuilder_ReturnBuilder() {
 	builder := orderEntity.NewBuilder()
-	require.NotNil(o.T(), builder)
+	require.NotNil(s.T(), builder)
 }
 
-func (o *OrderBuilder) TestBuild_NoParamGiven_ReturnErr() {
+func (s *OrderBuilderShould) TestBuild_NoParamGiven_ReturnErr() {
 	expectedErr := []error{
 		orderEntity.ErrOrderIDIsRequired,
 		orderEntity.ErrProductsIsRequired,
@@ -34,14 +34,14 @@ func (o *OrderBuilder) TestBuild_NoParamGiven_ReturnErr() {
 	}
 
 	builder, err := orderEntity.NewBuilder().Build()
-	require.Nil(o.T(), builder)
-	commonTesting.AssertErrors(o.T(), err, expectedErr)
+	require.Nil(s.T(), builder)
+	commonTesting.AssertErrors(s.T(), err, expectedErr)
 }
 
-func (p *OrderBuilder) TestBuild_AllParam_ReturnOrder() {
+func (s *OrderBuilderShould) TestBuild_AllParam_ReturnOrder() {
 	orderID := orderEntity.NewOrderID()
-	products := entityStub.Products(5)
-	customerID := entityCustomer.NewCustomerID()
+	products := productEntityStub.GetProducts(5)
+	customerID := customerEntityStub.GetCustomerID()
 	createdAt := time.Now()
 
 	order, err := orderEntity.NewBuilder().
@@ -50,7 +50,6 @@ func (p *OrderBuilder) TestBuild_AllParam_ReturnOrder() {
 		CustomerID(customerID).
 		CreatedAt(&createdAt).
 		Build()
-
-	require.NoError(p.T(), err)
-	require.NotNil(p.T(), order)
+	require.NoError(s.T(), err)
+	require.NotNil(s.T(), order)
 }

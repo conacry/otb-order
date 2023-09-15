@@ -5,25 +5,25 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	productEntity "online-shop-order/domain/entity/product"
-	product3 "online-shop-order/test/testDouble/stub/entity/product"
+	productEntityStub "online-shop-order/test/testDouble/stub/entity/product"
 	"testing"
 )
 
-type ProductBuilder struct {
+type ProductBuilderShould struct {
 	suite.Suite
 }
 
-func TestProductBuilder(t *testing.T) {
+func TestProductBuilderShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(ProductBuilder))
+	suite.Run(t, new(ProductBuilderShould))
 }
 
-func (p *ProductBuilder) TestNewBuilder_ReturnBuilder() {
+func (s *ProductBuilderShould) TestNewBuilder_ReturnBuilder() {
 	builder := productEntity.NewBuilder()
-	require.NotNil(p.T(), builder)
+	require.NotNil(s.T(), builder)
 }
 
-func (p *ProductBuilder) TestBuild_NoParamGiven_ReturnErr() {
+func (s *ProductBuilderShould) TestBuild_NoParamGiven_ReturnErr() {
 	expectedErr := []error{
 		productEntity.ErrProductIDIsRequired,
 		productEntity.ErrTitleIsRequired,
@@ -32,15 +32,15 @@ func (p *ProductBuilder) TestBuild_NoParamGiven_ReturnErr() {
 	}
 
 	builder, err := productEntity.NewBuilder().Build()
-	require.Nil(p.T(), builder)
-	commonTesting.AssertErrors(p.T(), err, expectedErr)
+	require.Nil(s.T(), builder)
+	commonTesting.AssertErrors(s.T(), err, expectedErr)
 }
 
-func (p *ProductBuilder) TestBuild_AllParam_ReturnProduct() {
-	productID := productEntity.NewProductID()
-	title := product3.Title()
-	description := product3.Description()
-	cost := product3.Cost()
+func (s *ProductBuilderShould) TestBuild_AllParam_ReturnProduct() {
+	productID := productEntityStub.GetProductID()
+	title := productEntityStub.GetTitle()
+	description := productEntityStub.GetDescription()
+	cost := productEntityStub.GetCost()
 
 	product, err := productEntity.NewBuilder().
 		ProductID(productID).
@@ -49,6 +49,6 @@ func (p *ProductBuilder) TestBuild_AllParam_ReturnProduct() {
 		Cost(cost).
 		Build()
 
-	require.NoError(p.T(), err)
-	require.NotNil(p.T(), product)
+	require.NoError(s.T(), err)
+	require.NotNil(s.T(), product)
 }

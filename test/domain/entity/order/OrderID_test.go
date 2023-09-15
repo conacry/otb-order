@@ -2,40 +2,39 @@ package orderEntityTest
 
 import (
 	"errors"
+	"github.com/conacry/go-platform/pkg/generator"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	orderEntity "online-shop-order/domain/entity/order"
 	"testing"
 )
 
-type OrderID struct {
+type OrderIDShould struct {
 	suite.Suite
 }
 
-func TestOrderID(t *testing.T) {
+func TestOrderIDShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(OrderID))
+	suite.Run(t, new(OrderIDShould))
 }
 
-func (o *OrderID) TestNewOrderID_ReturnOrderID() {
+func (s *OrderIDShould) TestNewOrderID_ReturnOrderID() {
 	orderID := orderEntity.NewOrderID()
-	require.NotNil(o.T(), orderID)
+	require.NotNil(s.T(), orderID)
 }
 
-func (o *OrderID) TestOrderIDFrom_ValueIsEmpty_ReturnErr() {
+func (s *OrderIDShould) TestOrderIDFrom_ValueIsEmpty_ReturnErr() {
 	expectedErr := orderEntity.ErrOrderIDIsEmpty
 
 	orderID, err := orderEntity.OrderIDFrom("")
-
-	require.Nil(o.T(), orderID)
+	require.Nil(s.T(), orderID)
 	errors.Is(expectedErr, err)
 }
 
-func (o *OrderID) TestOrderIDFrom_ValueIsValid_ReturnOrderID() {
-	orderIDStr := orderEntity.NewOrderID().String()
+func (s *OrderIDShould) TestOrderIDFrom_ValueIsValid_ReturnOrderID() {
+	orderIDStr := generator.GenerateUUID()
 
 	orderID, err := orderEntity.OrderIDFrom(orderIDStr)
-
-	require.NoError(o.T(), err)
-	require.Equal(o.T(), orderIDStr, orderID.String())
+	require.NoError(s.T(), err)
+	require.Equal(s.T(), orderIDStr, orderID.String())
 }

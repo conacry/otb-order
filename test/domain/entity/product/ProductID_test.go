@@ -2,39 +2,34 @@ package productEntityTest
 
 import (
 	"errors"
+	"github.com/conacry/go-platform/pkg/generator"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	productEntity "online-shop-order/domain/entity/product"
 	"testing"
 )
 
-type ProductID struct {
+type ProductIDShould struct {
 	suite.Suite
 }
 
-func TestProductID(t *testing.T) {
+func TestProductIDShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(ProductID))
+	suite.Run(t, new(ProductIDShould))
 }
 
-func (p *ProductID) TestNewProductID_ReturnProductID() {
-	productID := productEntity.NewProductID()
-	require.NotNil(p.T(), productID)
-}
-
-func (p *ProductID) TestProductIDFrom_ValueIsEmpty_ReturnErr() {
+func (s *ProductIDShould) TestProductIDFrom_ValueIsEmpty_ReturnErr() {
 	expectedErr := productEntity.ErrProductIDIsEmpty
-	productID, err := productEntity.ProductIDFrom("")
 
-	require.Nil(p.T(), productID)
+	productID, err := productEntity.ProductIDFrom("")
+	require.Nil(s.T(), productID)
 	errors.Is(expectedErr, err)
 }
 
-func (p *ProductID) TestProductIDFrom_AllParam_ReturnProductID() {
-	productIDStr := productEntity.NewProductID().String()
+func (s *ProductIDShould) TestProductIDFrom_AllParam_ReturnProductID() {
+	productIDStr := generator.GenerateUUID()
 
 	productID, err := productEntity.ProductIDFrom(productIDStr)
-
-	require.NoError(p.T(), err)
-	require.NotNil(p.T(), productID)
+	require.NoError(s.T(), err)
+	require.NotNil(s.T(), productID)
 }

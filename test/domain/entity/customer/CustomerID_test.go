@@ -2,41 +2,35 @@ package customerEntityTest
 
 import (
 	"errors"
+	"github.com/conacry/go-platform/pkg/generator"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	entityCustomer "online-shop-order/domain/entity/customer"
+	customerEntity "online-shop-order/domain/entity/customer"
 	"testing"
 )
 
-type CustomerID struct {
+type CustomerIDShould struct {
 	suite.Suite
 }
 
-func TestCustomerID(t *testing.T) {
+func TestCustomerIDShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(CustomerID))
+	suite.Run(t, new(CustomerIDShould))
 }
 
-func (c *CustomerID) TestNewCustomerID_ReturnCustomerID() {
-	customerID := entityCustomer.NewCustomerID()
-	require.NotNil(c.T(), customerID)
-}
+func (s *CustomerIDShould) TestCustomerIDFrom_ValueIsEmpty_ReturnErr() {
+	expectedErr := customerEntity.ErrCustomerIDIsEmpty
 
-func (c *CustomerID) TestCustomerIDFrom_ValueIsEmpty_ReturnErr() {
-	expectedErr := entityCustomer.ErrCustomerIDIsEmpty
-
-	customerID, err := entityCustomer.CustomerIDFrom("")
-
-	require.Nil(c.T(), customerID)
+	customerID, err := customerEntity.CustomerIDFrom("")
+	require.Nil(s.T(), customerID)
 	errors.Is(expectedErr, err)
 }
 
-func (c *CustomerID) TestCustomerIDFrom_ValueIsValid_ReturnCustomerID() {
-	customerIDStr := entityCustomer.NewCustomerID().String()
+func (s *CustomerIDShould) TestCustomerIDFrom_ValueIsValid_ReturnCustomerID() {
+	customerIDStr := generator.GenerateUUID()
 
-	customerID, err := entityCustomer.CustomerIDFrom(customerIDStr)
-
-	require.NotNil(c.T(), customerID)
-	require.Equal(c.T(), customerIDStr, customerID.String())
-	require.NoError(c.T(), err)
+	customerID, err := customerEntity.CustomerIDFrom(customerIDStr)
+	require.NotNil(s.T(), customerID)
+	require.Equal(s.T(), customerIDStr, customerID.String())
+	require.NoError(s.T(), err)
 }
