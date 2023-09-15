@@ -1,11 +1,11 @@
-package entityStub
+package productEntityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"
 	productEntity "online-shop-order/domain/entity/product"
 )
 
-func Cost() *productEntity.Cost {
+func GetCost() *productEntity.Cost {
 	randomNumber := generator.RandomNumber(0, 100_000)
 
 	cost, err := productEntity.CostFrom(int64(randomNumber))

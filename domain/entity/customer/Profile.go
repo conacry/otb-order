@@ -1,14 +1,8 @@
 package customerEntity
 
-import (
-	"github.com/conacry/go-platform/pkg/errors"
-)
-
 type Profile struct {
 	firstName string
 	lastName  string
-
-	errors *errors.Errors
 }
 
 func ProfileFrom(firstName string, lastName string) (Profile, error) {

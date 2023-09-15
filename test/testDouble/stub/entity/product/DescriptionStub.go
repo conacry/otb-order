@@ -1,11 +1,11 @@
-package entityStub
+package productEntityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"
 	productEntity "online-shop-order/domain/entity/product"
 )
 
-func Description() *productEntity.Description {
+func GetDescription() *productEntity.Description {
 	randomStr := generator.RandomDefaultStr()
 
 	description, err := productEntity.DescriptionFrom(randomStr)

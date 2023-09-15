@@ -5,45 +5,43 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	customerEntity "online-shop-order/domain/entity/customer"
-	entityStub "online-shop-order/test/testDouble/stub/entity/customer"
+	customerEntityStub "online-shop-order/test/testDouble/stub/entity/customer"
 	"testing"
 )
 
-type CustomerBuilder struct {
+type CustomerBuilderShould struct {
 	suite.Suite
 }
 
-func TestCustomerBuilder(t *testing.T) {
+func TestCustomerBuilderShould(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(CustomerBuilder))
+	suite.Run(t, new(CustomerBuilderShould))
 }
 
-func (c *CustomerBuilder) TestNewBuilder_ReturnBuilder() {
+func (s *CustomerBuilderShould) TestNewBuilder_ReturnBuilder() {
 	builder := customerEntity.NewBuilder()
-	require.NotNil(c.T(), builder)
+	require.NotNil(s.T(), builder)
 }
 
-func (c *CustomerBuilder) TestBuild_NoParamGiven_ReturnErr() {
+func (s *CustomerBuilderShould) TestBuild_NoParamGiven_ReturnErr() {
 	expectedErr := []error{
 		customerEntity.ErrCustomerIDIsRequired,
 		customerEntity.ErrProfileIsRequired,
 	}
 
 	builder, err := customerEntity.NewBuilder().Build()
-
-	require.Nil(c.T(), builder)
-	commonTesting.AssertErrors(c.T(), err, expectedErr)
+	require.Nil(s.T(), builder)
+	commonTesting.AssertErrors(s.T(), err, expectedErr)
 }
 
-func (c *CustomerBuilder) TestBuild_AllParam_ReturnCustomer() {
-	customerID := customerEntity.NewCustomerID()
-	profile := entityStub.Profile()
+func (s *CustomerBuilderShould) TestBuild_AllParam_ReturnCustomer() {
+	customerID := customerEntityStub.GetCustomerID()
+	profile := customerEntityStub.GetProfile()
 
 	customer, err := customerEntity.NewBuilder().
 		CustomerID(customerID).
 		Profile(profile).
 		Build()
-
-	require.NoError(c.T(), err)
-	require.NotNil(c.T(), customer)
+	require.NoError(s.T(), err)
+	require.NotNil(s.T(), customer)
 }

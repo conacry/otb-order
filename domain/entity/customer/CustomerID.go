@@ -8,10 +8,6 @@ type CustomerID struct {
 	value string
 }
 
-func NewCustomerID() *CustomerID {
-	return &CustomerID{value: generator.GenerateUUID()}
-}
-
 func CustomerIDFrom(strID string) (*CustomerID, error) {
 	if strID == "" {
 		return nil, ErrCustomerIDIsEmpty

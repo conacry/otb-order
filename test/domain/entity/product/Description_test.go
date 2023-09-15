@@ -9,30 +9,30 @@ import (
 	"testing"
 )
 
-type ProductDescription struct {
+type ProductDescriptionShould struct {
 	suite.Suite
 }
 
 func TestProductDescription(t *testing.T) {
 	t.Parallel()
-	suite.Run(t, new(ProductDescription))
+	suite.Run(t, new(ProductDescriptionShould))
 }
 
-func (p *ProductDescription) TestDescriptionFrom_ValueIsEmpty_ReturnErr() {
+func (s *ProductDescriptionShould) TestDescriptionFrom_ValueIsEmpty_ReturnErr() {
 	expectedErr := productEntity.ErrDescriptionIsEmpty
 
 	description, err := productEntity.DescriptionFrom("")
 
-	require.Equal(p.T(), "", description.String())
+	require.Equal(s.T(), "", description.String())
 	errors.Is(expectedErr, err)
 }
 
-func (p *ProductDescription) TestDescriptionFrom_ValueIsValid_ReturnDescription() {
-	descriptionStr := entityStub.Description().String()
+func (s *ProductDescriptionShould) TestDescriptionFrom_ValueIsValid_ReturnDescription() {
+	descriptionStr := productEntityStub.GetDescription().String()
 
 	description, err := productEntity.DescriptionFrom(descriptionStr)
 
-	require.NotNil(p.T(), description)
-	require.Equal(p.T(), descriptionStr, description.String())
-	require.NoError(p.T(), err)
+	require.NotNil(s.T(), description)
+	require.Equal(s.T(), descriptionStr, description.String())
+	require.NoError(s.T(), err)
 }

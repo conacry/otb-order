@@ -5,13 +5,12 @@ import (
 	productEntity "online-shop-order/domain/entity/product"
 )
 
-func GetTitle() *productEntity.Title {
-	randomStr := generator.RandomDefaultStr()
-
-	title, err := productEntity.TitleFrom(randomStr)
+func GetProductID() *productEntity.ProductID {
+	uuidStr := generator.GenerateUUID()
+	id, err := productEntity.ProductIDFrom(uuidStr)
 	if err != nil {
-		return nil
+		panic(err)
 	}
 
-	return &title
+	return id
 }

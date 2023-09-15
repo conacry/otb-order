@@ -1,11 +1,11 @@
-package entityStub
+package customerEntityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"
 	customerEntity "online-shop-order/domain/entity/customer"
 )
 
-func Profile() *customerEntity.Profile {
+func GetProfile() *customerEntity.Profile {
 	firstName := generator.RandomDefaultStr()
 	lastName := generator.RandomDefaultStr()
 

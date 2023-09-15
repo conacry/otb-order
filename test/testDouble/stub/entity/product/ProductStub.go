@@ -1,12 +1,12 @@
-package entityStub
+package productEntityStub
 
 import productEntity "online-shop-order/domain/entity/product"
 
-func Product() *productEntity.Product {
-	productID := productEntity.NewProductID()
-	title := Title()
-	description := Description()
-	cost := Cost()
+func GetProduct() *productEntity.Product {
+	productID := GetProductID()
+	title := GetTitle()
+	description := GetDescription()
+	cost := GetCost()
 
 	builder := productEntity.NewBuilder()
 	builder.ProductID(productID)
@@ -22,10 +22,10 @@ func Product() *productEntity.Product {
 	return product
 }
 
-func Products(count int) []productEntity.Product {
+func GetProducts(count int) []productEntity.Product {
 	products := make([]productEntity.Product, count)
 	for i := 0; i < count; i++ {
-		product := Product()
+		product := GetProduct()
 		products = append(products, *product)
 	}
 
