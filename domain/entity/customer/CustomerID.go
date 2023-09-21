@@ -15,7 +15,7 @@ func CustomerIDFrom(strID string) (*CustomerID, error) {
 
 	uuidID, err := generator.UUIDFrom(strID)
 	if err != nil {
-		return nil, err
+		return nil, ErrIllegalCustomerIDValue(err)
 	}
 
 	return &CustomerID{value: uuidID}, nil

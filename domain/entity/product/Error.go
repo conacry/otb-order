@@ -1,6 +1,13 @@
 package productEntity
 
-import "github.com/conacry/go-platform/pkg/errors"
+import (
+	"fmt"
+	"github.com/conacry/go-platform/pkg/errors"
+)
+
+var (
+	IllegalProductIDValueErrCode errors.ErrorCode = "16f7d28d-101"
+)
 
 var (
 	ErrProductIDIsEmpty      = errors.NewError("16f7d28d-001", "Value to create ProductID is required")
@@ -14,3 +21,8 @@ var (
 	ErrDescriptionIsRequired = errors.NewError("16f7d28d-009", "Product description is required")
 	ErrCostIsRequired        = errors.NewError("16f7d28d-010", "Product cost is required")
 )
+
+func ErrIllegalProductIDValue(cause error) error {
+	msg := fmt.Sprintf("Value to create OrderID is illegal. Cause: %q", cause)
+	return errors.NewError(IllegalProductIDValueErrCode, msg)
+}

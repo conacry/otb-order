@@ -15,7 +15,7 @@ func ProductIDFrom(strID string) (*ProductID, error) {
 
 	uuidID, err := generator.UUIDFrom(strID)
 	if err != nil {
-		return nil, err
+		return nil, ErrIllegalProductIDValue(err)
 	}
 
 	return &ProductID{value: uuidID}, nil

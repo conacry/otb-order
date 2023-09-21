@@ -1,6 +1,7 @@
 package orderEntityTest
 
 import (
+	"github.com/conacry/go-platform/pkg/errors"
 	"github.com/conacry/go-platform/pkg/generator"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
@@ -31,7 +32,7 @@ func (s *OrderIDShould) TestOrderIDFrom_ValueIsEmpty_ReturnErr() {
 func (s *OrderIDShould) TestOrderIDFrom_ValueIsNotUUID_ReturnErr() {
 	orderID, err := orderEntity.OrderIDFrom(generator.RandomDefaultStr())
 	require.Nil(s.T(), orderID)
-	require.Error(s.T(), err)
+	require.True(s.T(), errors.EqualByCode(err, orderEntity.IllegalOrderIDValueErrCode))
 }
 
 func (s *OrderIDShould) TestOrderIDFrom_ValueIsValid_ReturnOrderID() {
