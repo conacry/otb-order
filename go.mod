@@ -1,7 +1,9 @@
 module online-shop-order
 
+go 1.20
+
 require (
-	github.com/conacry/go-platform v0.0.0-20230915084053-14fbd038b631
+	github.com/conacry/go-platform v0.0.0-20230921104121-d1758dfdf17e
 	github.com/stretchr/testify v1.8.4
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -25,5 +27,3 @@ require (
 	golang.org/x/sync v0.3.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 )
-
-go 1.20
