@@ -14,3 +14,12 @@ func GetProductID() *productEntity.ProductID {
 
 	return id
 }
+
+func GetProductIDs(count int) []*productEntity.ProductID {
+	ids := make([]*productEntity.ProductID, count)
+	for i := 0; i < count; i++ {
+		ids[i] = GetProductID()
+	}
+
+	return ids
+}
