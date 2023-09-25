@@ -1,10 +1,8 @@
 package initApp
 
-type PostrgesqlConfig struct {
-	Url             string `yaml:"url"`
-	MaxConnIdleTime int    `yaml:"maxConnIdleTime"`
-	MaxConns        int    `yaml:"maxConns"`
-	MinConns        int    `yaml:"minConns"`
+type MongoConfig struct {
+	URL      string `yaml:"url"`
+	Database string `yaml:"database"`
 }
 
 type HttpTimeout struct {
@@ -19,7 +17,7 @@ type HttpConfig struct {
 }
 
 type AppConfig struct {
-	Name             string           `yaml:"name"`
-	PostrgesqlConfig PostrgesqlConfig `yaml:"postrgesql"`
-	HttpConfig       HttpConfig       `yaml:"http"`
+	Name        string      `yaml:"name"`
+	MongoConfig MongoConfig `yaml:"mongo"`
+	HttpConfig  HttpConfig  `yaml:"http"`
 }
