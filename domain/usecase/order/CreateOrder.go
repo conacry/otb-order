@@ -3,12 +3,12 @@ package orderUsecase
 import (
 	"context"
 	log "github.com/conacry/go-platform/pkg/logger"
-	boundaryModel "online-shop-order/boundary/model"
-	providerInterface "online-shop-order/boundary/provider"
-	repositoryInterface "online-shop-order/boundary/repository"
-	customerEntity "online-shop-order/domain/entity/customer"
-	orderEntity "online-shop-order/domain/entity/order"
-	productEntity "online-shop-order/domain/entity/product"
+	boundaryModel "otb-order/boundary/model"
+	providerInterface "otb-order/boundary/provider"
+	repositoryInterface "otb-order/boundary/repository"
+	customerEntity "otb-order/domain/entity/customer"
+	orderEntity "otb-order/domain/entity/order"
+	productEntity "otb-order/domain/entity/product"
 )
 
 var (

@@ -3,7 +3,7 @@ package repositoryMock
 import (
 	"context"
 	mocking "github.com/conacry/go-platform/pkg/mock"
-	orderEntity "online-shop-order/domain/entity/order"
+	orderEntity "otb-order/domain/entity/order"
 )
 
 type OrderRepositoryMock struct {

@@ -2,7 +2,7 @@ package providerInterface
 
 import (
 	"context"
-	customerEntity "online-shop-order/domain/entity/customer"
+	customerEntity "otb-order/domain/entity/customer"
 )
 
 type CustomerProvider interface {

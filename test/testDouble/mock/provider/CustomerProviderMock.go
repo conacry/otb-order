@@ -3,7 +3,7 @@ package providerMock
 import (
 	"context"
 	mocking "github.com/conacry/go-platform/pkg/mock"
-	customerEntity "online-shop-order/domain/entity/customer"
+	customerEntity "otb-order/domain/entity/customer"
 )
 
 type CustomerProviderMock struct {

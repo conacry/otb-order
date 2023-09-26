@@ -1,6 +1,6 @@
 package customerEntityStub
 
-import customerEntity "online-shop-order/domain/entity/customer"
+import customerEntity "otb-order/domain/entity/customer"
 
 func GetCustomer() *customerEntity.Customer {
 	customer, err := customerEntity.NewBuilder().

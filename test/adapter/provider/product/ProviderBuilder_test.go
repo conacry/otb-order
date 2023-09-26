@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	productProvider "online-shop-order/adapter/provider/product"
-	repositoryMock "online-shop-order/test/testDouble/mock/repository"
+	productProvider "otb-order/adapter/provider/product"
+	repositoryMock "otb-order/test/testDouble/mock/repository"
 	"testing"
 )
 

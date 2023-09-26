@@ -2,7 +2,7 @@ package usecaseInterface
 
 import (
 	"context"
-	boundaryModel "online-shop-order/boundary/model"
+	boundaryModel "otb-order/boundary/model"
 )
 
 type CreateOrder interface {

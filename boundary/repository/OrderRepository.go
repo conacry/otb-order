@@ -2,7 +2,7 @@ package repositoryInterface
 
 import (
 	"context"
-	orderEntity "online-shop-order/domain/entity/order"
+	orderEntity "otb-order/domain/entity/order"
 )
 
 type OrderRepository interface {

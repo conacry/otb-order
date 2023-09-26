@@ -3,8 +3,8 @@ package orderEntity
 import (
 	"github.com/conacry/go-platform/pkg/errors"
 	"github.com/conacry/go-platform/pkg/time"
-	entityCustomer "online-shop-order/domain/entity/customer"
-	productEntity "online-shop-order/domain/entity/product"
+	entityCustomer "otb-order/domain/entity/customer"
+	productEntity "otb-order/domain/entity/product"
 )
 
 type Builder struct {

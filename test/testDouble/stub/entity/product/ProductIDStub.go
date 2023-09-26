@@ -2,7 +2,7 @@ package productEntityStub
 
 import (
 	"github.com/conacry/go-platform/pkg/generator"
-	productEntity "online-shop-order/domain/entity/product"
+	productEntity "otb-order/domain/entity/product"
 )
 
 func GetProductID() *productEntity.ProductID {

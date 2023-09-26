@@ -1,4 +1,4 @@
-name: online-shop-order
+name: otb-order
 mongo:
   url: ""
   database: ""

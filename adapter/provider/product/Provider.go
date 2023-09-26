@@ -3,8 +3,8 @@ package productProvider
 import (
 	"context"
 	log "github.com/conacry/go-platform/pkg/logger"
-	repositoryInterface "online-shop-order/boundary/repository"
-	productEntity "online-shop-order/domain/entity/product"
+	repositoryInterface "otb-order/boundary/repository"
+	productEntity "otb-order/domain/entity/product"
 )
 
 type Provider struct {

@@ -3,7 +3,7 @@ package repositoryMock
 import (
 	"context"
 	mocking "github.com/conacry/go-platform/pkg/mock"
-	productEntity "online-shop-order/domain/entity/product"
+	productEntity "otb-order/domain/entity/product"
 )
 
 func GetProductRepository() *ProductRepositoryMock {

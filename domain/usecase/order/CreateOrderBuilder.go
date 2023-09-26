@@ -3,8 +3,8 @@ package orderUsecase
 import (
 	"github.com/conacry/go-platform/pkg/errors"
 	log "github.com/conacry/go-platform/pkg/logger"
-	providerInterface "online-shop-order/boundary/provider"
-	repositoryInterface "online-shop-order/boundary/repository"
+	providerInterface "otb-order/boundary/provider"
+	repositoryInterface "otb-order/boundary/repository"
 )
 
 type CreateOrderBuilder struct {

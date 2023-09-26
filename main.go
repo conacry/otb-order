@@ -6,9 +6,9 @@ import (
 	initapp "github.com/conacry/go-platform/pkg/init"
 	"gopkg.in/yaml.v3"
 	"log"
-	initApp "online-shop-order/initApp"
 	"os"
 	"os/signal"
+	initApp "otb-order/initApp"
 	"path/filepath"
 	"syscall"
 )

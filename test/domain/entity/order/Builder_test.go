@@ -5,9 +5,9 @@ import (
 	"github.com/conacry/go-platform/pkg/time"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	orderEntity "online-shop-order/domain/entity/order"
-	customerEntityStub "online-shop-order/test/testDouble/stub/entity/customer"
-	"online-shop-order/test/testDouble/stub/entity/product"
+	orderEntity "otb-order/domain/entity/order"
+	customerEntityStub "otb-order/test/testDouble/stub/entity/customer"
+	"otb-order/test/testDouble/stub/entity/product"
 	"testing"
 )
 
