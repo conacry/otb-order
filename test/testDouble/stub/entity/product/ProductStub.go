@@ -1,6 +1,6 @@
 package productEntityStub
 
-import productEntity "online-shop-order/domain/entity/product"
+import productEntity "otb-order/domain/entity/product"
 
 func GetProduct() *productEntity.Product {
 	productID := GetProductID()

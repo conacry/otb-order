@@ -5,7 +5,7 @@ import (
 	"github.com/conacry/go-platform/pkg/generator"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	orderEntity "online-shop-order/domain/entity/order"
+	orderEntity "otb-order/domain/entity/order"
 	"testing"
 )
 

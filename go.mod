@@ -1,4 +1,4 @@
-module online-shop-order
+module otb-order
 
 go 1.20
 

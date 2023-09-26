@@ -2,7 +2,7 @@ package repositoryInterface
 
 import (
 	"context"
-	productEntity "online-shop-order/domain/entity/product"
+	productEntity "otb-order/domain/entity/product"
 )
 
 type ProductRepository interface {

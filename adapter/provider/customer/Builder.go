@@ -3,7 +3,7 @@ package customerProvider
 import (
 	"github.com/conacry/go-platform/pkg/errors"
 	log "github.com/conacry/go-platform/pkg/logger"
-	repositoryInterface "online-shop-order/boundary/repository"
+	repositoryInterface "otb-order/boundary/repository"
 )
 
 type ProviderBuilder struct {

@@ -5,9 +5,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	orderEntity "online-shop-order/domain/entity/order"
-	customerEntityStub "online-shop-order/test/testDouble/stub/entity/customer"
-	productEntityStub "online-shop-order/test/testDouble/stub/entity/product"
+	orderEntity "otb-order/domain/entity/order"
+	customerEntityStub "otb-order/test/testDouble/stub/entity/customer"
+	productEntityStub "otb-order/test/testDouble/stub/entity/product"
 	"testing"
 )
 
