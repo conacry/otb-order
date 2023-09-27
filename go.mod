@@ -2,6 +2,10 @@ module otb-order
 
 go 1.20
 
+replace (
+	github.com/conacry/go-platform => /Users/conacry/Dev/Repository/go/src/go-platform
+)
+
 require (
 	github.com/conacry/go-platform v0.0.0-20230925100517-60c7d4ac0de9
 	github.com/stretchr/testify v1.8.4
